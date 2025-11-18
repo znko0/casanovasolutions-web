@@ -1,0 +1,759 @@
+<!-- PORTFOLIO CASANOVAS SOLUTIONS - HTML/CSS/JS FULL -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casanovas Solutions · IT & Cybersecurity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-dark: #050505;
+      --bg-light: #f7f7f7;
+      --text-dark: #0a0a0a;
+      --text-light: #fdfdfd;
+      --accent1: #00b7ff;
+      --accent2: #8a2bff;
+      --card-bg-dark: rgba(255,255,255,0.04);
+      --card-border-dark: rgba(255,255,255,0.12);
+      --card-bg-light: #ffffff;
+      --card-border-light: #dddddd;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-light);
+      overflow-x: hidden;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    body.light-mode {
+      background: var(--bg-light);
+      color: var(--text-dark);
+    }
+
+    /* BACKGROUND GRADIENT + PARTICLES */
+    #gradient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 20% 20%, #003cff, transparent 60%),
+        radial-gradient(circle at 80% 80%, #8300ff, transparent 60%),
+        radial-gradient(circle at 50% 50%, #009dff, transparent 70%);
+      filter: blur(60px);
+      opacity: 0.5;
+      animation: glow 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      0% { filter: blur(60px); opacity: 0.45; }
+      100% { filter: blur(80px); opacity: 0.7; }
+    }
+
+    canvas#particles {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.35;
+    }
+
+    /* NAVBAR */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(90deg, rgba(5,5,5,0.85), rgba(5,5,10,0.4));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    body.light-mode .nav {
+      background: rgba(247,247,247,0.9);
+      border-bottom-color: rgba(0,0,0,0.06);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo {
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      opacity: 0.8;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .mode-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.3);
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    body.light-mode .mode-toggle {
+      border-color: rgba(0,0,0,0.15);
+      background: rgba(255,255,255,0.8);
+    }
+
+    .mode-toggle:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 12px rgba(0,0,0,0.35);
+    }
+
+    /* HERO */
+    header {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 20px 80px; /* top extra for nav */
+      position: relative;
+    }
+
+    .hero-logo {
+      width: 90px;
+      height: 90px;
+      object-fit: contain;
+      margin-bottom: 18px;
+      filter: drop-shadow(0 0 18px rgba(0,150,255,0.6));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .hero-name {
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 4.2rem;
+      max-width: 90%;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin: 0;
+      text-shadow: 0px 0px 25px rgba(0, 150, 255, 0.5);
+      opacity: 0;
+      animation: heroFade 1.3s forwards;
+    }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .typing {
+      margin-top: 20px;
+      font-size: 1.3rem;
+      font-weight: 300;
+      opacity: 0;
+      color: #d2eaff;
+      min-height: 1.6em;
+      animation: typingFade 1.8s forwards;
+      animation-delay: 0.3s;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    @keyframes typingFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hero-sub {
+      margin-top: 20px;
+      max-width: 520px;
+      color: #d4e4ff;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    body.light-mode .hero-sub {
+      color: #333;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 80px 20px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    h2 {
+      font-size: 2.6rem;
+      font-weight: 800;
+      margin-bottom: 35px;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: #d0d7e5;
+    }
+
+    body.light-mode p {
+      color: #333;
+    }
+
+    /* ABOUT */
+    .about-content {
+      display: grid;
+      grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    @media (max-width: 800px) {
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .photo-box {
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-box img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      border: 4px solid rgba(0,140,255,0.8);
+      object-fit: cover;
+      box-shadow: 0px 0px 40px rgba(0,140,255,0.5);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .cert-list li {
+      font-size: 0.98rem;
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .cert-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent1);
+    }
+
+    /* SERVICES */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg-dark);
+      border: 1px solid var(--card-border-dark);
+      padding: 22px;
+      border-radius: 18px;
+      backdrop-filter: blur(12px);
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.light-mode .card {
+      background: var(--card-bg-light);
+      border-color: var(--card-border-light);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(0,183,255,0.18), transparent 55%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0px 10px 30px rgba(0,0,0,0.4);
+      border-color: var(--accent1);
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #cfd7e5;
+    }
+
+    body.light-mode .card p {
+      color: #444;
+    }
+
+    .icon {
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+      display: inline-block;
+      animation: pulseIcon 2.4s infinite;
+    }
+
+    @keyframes pulseIcon {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.15); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+
+    /* PROJECTS */
+    .projects-placeholder {
+      font-size: 0.98rem;
+      opacity: 0.85;
+    }
+
+    /* CONTACT */
+    #contacto .contact-text {
+      max-width: 650px;
+      margin: 0 auto 25px auto;
+      text-align: center;
+    }
+
+    #contacto .form-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    form {
+      max-width: 520px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      text-align: left;
+    }
+
+    input, textarea {
+      padding: 14px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid #444;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 0.98rem;
+      font-family: "Inter", sans-serif;
+    }
+
+    body.light-mode input,
+    body.light-mode textarea {
+      background: #ffffff;
+      border-color: #cccccc;
+      color: #111;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: none;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #fff;
+      transition: 0.25s ease;
+      align-self: flex-start;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px 16px 40px;
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2.6rem;
+      }
+      .typing {
+        font-size: 1.05rem;
+        white-space: normal;
+      }
+      .nav-links {
+        display: none; /* si quieres, luego haces menú móvil */
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- BACKGROUND EFFECTS -->
+  <div id="gradient-bg"></div>
+  <canvas id="particles"></canvas>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-left">
+      <img src="logo-casanovas.png" alt="Logo Casanovas Solutions" class="nav-logo" />
+      <span class="nav-brand">Casanovas Solutions</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about">Sobre mí</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="nav-right">
+      <button class="mode-toggle" id="modeToggle" aria-label="Cambiar modo">
+        🌗
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header>
+    <img src="logo-casanovas.png" alt="Logo Casanovas Solutions" class="hero-logo" />
+    <div class="hero-name">ARNAU CASANOVAS</div>
+    <h1 class="hero-title">Casanovas Solutions</h1>
+    <div class="typing" id="typing"></div>
+    <p class="hero-sub">
+      Soluciones digitales, ciberseguridad y desarrollo web pensados para negocios reales:
+      pequeños comercios, autónomos y proyectos que necesitan dar un salto profesional.
+    </p>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>Sobre mí</h2>
+    <div class="about-content">
+      <div class="photo-box">
+        <img src="IMG_7264.JPG" alt="Foto Arnau Casanovas" />
+      </div>
+      <div>
+        <p>
+          Soy <strong>Arnau Casanovas</strong>, profesional especializado en
+          <strong>ciberseguridad</strong>, <strong>soluciones digitales</strong>,
+          <strong>automatización</strong> y <strong>consultoría tecnológica</strong>.
+          Actualmente formo parte del área de <strong>Technology</strong> en una
+          <strong>multinacional líder</strong>, donde trabajo en entornos corporativos
+          exigentes.
+        </p>
+        <p>
+          Con esa experiencia nace <strong>Casanovas Solutions</strong>: un enfoque
+          cercano y práctico para ayudar a <strong>negocios locales, autónomos y
+          pequeñas empresas</strong> a mejorar su seguridad, su imagen digital y la
+          forma en la que trabajan día a día, sin complicarse con tecnicismos.
+        </p>
+
+        <h3>Certificaciones & foco técnico</h3>
+        <ul class="cert-list">
+          <li>ISC2 Certified in Cybersecurity (CC)</li>
+          <li>Formación y experiencia en Blue Team / IT Security</li>
+          <li>CySA+</li>
+          <li>Experiencia real en redes, scripting y entornos corporativos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="servicios">
+    <h2>Servicios para tu negocio</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🌐</div>
+        <h3>Páginas web profesionales</h3>
+        <p>
+          Webs modernas y rápidas con <strong>diseño premium</strong>,
+          totalmente personalizadas y pensadas para atraer clientes.
+          Incluyen botón de WhatsApp y un diseño visual sólido y profesional.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🔒</div>
+        <h3>Webs seguras & auditoría básica</h3>
+        <p>
+          Páginas protegidas desde el diseño, revisión de puntos débiles,
+          configuración segura y recomendaciones claras para mantener tu negocio
+          digital con buena base de seguridad.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💼</div>
+        <h3>Digitalización para pequeños negocios</h3>
+        <p>
+          Transformación de tu negocio al entorno digital: documentos,
+          procesos, reservas, formularios, automatización sencilla y lo
+          necesario para dejar de hacer todo “a mano”.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">⚡</div>
+        <h3>Automatización sencilla</h3>
+        <p>
+          Scripts y automatizaciones que ahorran tiempo: tareas repetitivas,
+          avisos, correos automáticos y pequeños procesos IT adaptados a tu día a día.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">📱</div>
+        <h3>Visibilidad online real</h3>
+        <p>
+          Presencia cuidada en Google Business, enlaces útiles, reseñas y
+          recomendaciones para que cuando te busquen, te encuentren bien.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Asesoría cercana</h3>
+        <p>
+          Análisis de tu situación actual y una guía clara para mejorar tu
+          tecnología, organización y presencia digital, sin discursos técnicos
+          innecesarios.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+    <p class="projects-placeholder">
+
+    </p>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p class="contact-text">
+      Cuéntame qué tipo de negocio tienes y en qué crees que podría ayudarte
+      (web, seguridad, digitalización, automatización…). Te responderé con una
+      propuesta clara y adaptada.
+    </p>
+    <div class="form-wrapper">
+      <form>
+        <input type="text" name="nombre" placeholder="Nombre" required />
+        <input type="email" name="email" placeholder="Correo electrónico" required />
+        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Casanovas Solutions · Arnau Casanovas
+  </footer>
+
+  <script>
+    // TYPING EFFECT
+    const typingEl = document.getElementById("typing");
+    const typingText = "Ciberseguridad · Páginas web · Digitalización · Automatización para negocios locales";
+    let tIndex = 0;
+    function type() {
+      if (!typingEl) return;
+      if (tIndex < typingText.length) {
+        typingEl.textContent += typingText.charAt(tIndex);
+        tIndex++;
+        setTimeout(type, 40);
+      }
+    }
+    setTimeout(type, 600);
+
+    // SCROLL REVEAL
+    const sections = document.querySelectorAll("section");
+    function revealSections() {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add("visible");
+      });
+    }
+    window.addEventListener("scroll", revealSections);
+    revealSections();
+
+    // MODE TOGGLE
+    const modeToggle = document.getElementById("modeToggle");
+    function applyMode(mode) {
+      if (mode === "light") {
+        document.body.classList.add("light-mode");
+      } else {
+        document.body.classList.remove("light-mode");
+      }
+    }
+    const savedMode = localStorage.getItem("cs_mode");
+    if (savedMode) applyMode(savedMode);
+
+    modeToggle.addEventListener("click", () => {
+      const isLight = document.body.classList.toggle("light-mode");
+      localStorage.setItem("cs_mode", isLight ? "light" : "dark");
+    });
+
+    // PARTICLES
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function createParticles() {
+      const total = 70;
+      particles = [];
+      for (let i = 0; i < total; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 2 + 0.5,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3
+        });
+      }
+    }
+    createParticles();
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "rgba(255,255,255,0.8)";
+      particles.forEach(p => {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+      });
+      requestAnimationFrame(drawParticles);
+    }
+    drawParticles();
+
+    // YEAR
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
