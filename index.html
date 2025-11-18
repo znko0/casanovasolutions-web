@@ -666,12 +666,19 @@
       propuesta clara y adaptada.
     </p>
     <div class="form-wrapper">
-      <form>
-        <input type="text" name="nombre" placeholder="Nombre" required />
-        <input type="email" name="email" placeholder="Correo electrónico" required />
-        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-        <button type="submit">Enviar</button>
-      </form>
+<form action="https://formspree.io/f/xeonejaz" method="POST" id="contactForm">
+  <!-- Honeypot anti-spam -->
+  <input type="text" name="_gotcha" style="display:none">
+
+  <input type="text" name="nombre" placeholder="Nombre" required />
+  <input type="email" name="email" placeholder="Correo electrónico" required />
+  <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+  <button type="submit">Enviar</button>
+
+  <!-- Mensaje de estado -->
+  <p id="form-status" style="margin-top:10px;color:#00ffaa;font-size:0.95rem;"></p>
+</form>
     </div>
   </section>
 
@@ -771,6 +778,46 @@
 
     // YEAR
     document.getElementById("year").textContent = new Date().getFullYear();
+        // CONTACT FORM HANDLER + ANTISPAM
+    const contactForm = document.getElementById("contactForm");
+    const statusEl = document.getElementById("form-status");
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault(); // bloquea recarga
+
+      // Honeypot check
+      if (contactForm._gotcha.value) {
+        statusEl.textContent = "Detectado spam. No se envió el mensaje.";
+        return;
+      }
+
+      statusEl.style.color = "#00ffaa";
+      statusEl.textContent = "Enviando...";
+
+      const data = new FormData(contactForm);
+      const action = contactForm.getAttribute("action");
+
+      try {
+        const res = await fetch(action, {
+          method: "POST",
+          body: data,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (res.ok) {
+          statusEl.textContent = "Mensaje enviado correctamente. ¡Gracias!";
+          contactForm.reset();
+        } else {
+          statusEl.style.color = "#ff6b6b";
+          statusEl.textContent = "Hubo un error al enviar el mensaje.";
+        }
+      } catch (error) {
+        statusEl.style.color = "#ff6b6b";
+        statusEl.textContent = "No se pudo conectar al servidor.";
+      }
+    });
   </script>
 </body>
 </html>
