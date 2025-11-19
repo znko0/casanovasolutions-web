@@ -806,9 +806,11 @@
           },
         });
 
-        if (res.ok) {
-          statusEl.textContent = "Mensaje enviado correctamente. ¡Gracias!";
-          contactForm.reset();
+if (res.ok) {
+  window.location.href = "/gracias.html";
+  return;
+}
+
         } else {
           statusEl.style.color = "#ff6b6b";
           statusEl.textContent = "Hubo un error al enviar el mensaje.";
