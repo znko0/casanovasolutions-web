@@ -807,7 +807,7 @@
       propuesta clara y adaptada.
    </p>
    <div class="form-wrapper">
-    <form action="https://formspree.io/f/xeonejaz" method="POST">
+    <form action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
 
       <input type="text" name="_gotcha" style="display:none">
 
@@ -967,6 +967,31 @@ window.addEventListener("scroll", animateCounters);
       if (honeypot) {
         e.preventDefault();
         return false;
+      }
+    });
+  </script>
+  <script>
+    document.querySelector("form").addEventListener("submit", async function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const data = new FormData(form);
+      // honeypot
+      if (data.get("_gotcha")) return;
+
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+          "Accept": "application/json"
+        }
+      });
+
+      // Si va bien → redirigimos manualmente
+      if (response.ok) {
+        window.location.href = "https://casanovasolutions.es/gracias.html";
+      } else {
+        alert("Hubo un error al enviar el mensaje. Inténtalo de nuevo.");
       }
     });
   </script>
