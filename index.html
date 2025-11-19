@@ -804,13 +804,17 @@
    </p>
    <div class="form-wrapper">
     <form>
-     <input name="nombre" placeholder="Nombre" required="" type="text"/>
-     <input name="email" placeholder="Correo electrónico" required="" type="email"/>
-     <textarea name="mensaje" placeholder="Tu mensaje" required=""></textarea>
-     <button type="submit">
-      Enviar
-     </button>
-    </form>
+      <form action="https://formspree.io/f/xeonejaz" method="POST">
+        <!-- Antispam -->
+        <input type="text" name="_gotcha" style="display:none">
+        <input name="nombre" placeholder="Nombre" required type="text">
+        <input name="email" placeholder="Correo electrónico" required type="email">
+        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+
+        <input type="hidden" name="_redirect" value="https://casanovasolutions.es/gracias.html">
+
+        <button type="submit">Enviar</button>
+      </form>
    </div>
   </section>
   <footer>
@@ -952,6 +956,15 @@ function animateCounters() {
 }
 
 window.addEventListener("scroll", animateCounters);
+  </script>
+  <script>
+    document.querySelector("form").addEventListener("submit", function(e){
+      const honeypot = document.querySelector("input[name='_gotcha']").value;
+      if (honeypot) {
+        e.preventDefault();
+        return false;
+      }
+    });
   </script>
  </body>
 </html>
