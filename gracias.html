@@ -73,6 +73,57 @@
 
 <body>
   <div class="box">
+    <div class="check-container">
+  <svg class="checkmark" viewBox="0 0 64 64">
+    <defs>
+      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#00b7ff"/>
+        <stop offset="100%" stop-color="#8a2bff"/>
+      </linearGradient>
+    </defs>
+
+    <circle class="checkmark-circle" cx="32" cy="32" r="28" fill="none" stroke="url(#gradient)"/>
+    <path class="checkmark-check" fill="none" stroke="url(#gradient)" d="M18 34l9 9 19-19"/>
+  </svg>
+</div>
+
+<style>
+.check-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.checkmark {
+  width: 100px;
+  height: 100px;
+  stroke-width: 4;
+  overflow: visible; /* 🔥 clave para evitar cortes */
+}
+
+.checkmark-circle {
+  stroke-dasharray: 175;
+  stroke-dashoffset: 175;
+  stroke-linecap: round;
+  animation: drawCircle 0.7s ease forwards;
+}
+
+.checkmark-check {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  stroke-linecap: round;
+  animation: drawCheck 0.45s 0.45s ease forwards;
+}
+
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawCheck {
+  to { stroke-dashoffset: 0; }
+}
+</style>
+
     <h1>¡Gracias por tu mensaje!</h1>
     <p>
       Lo he recibido correctamente.<br>
