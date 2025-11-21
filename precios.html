@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Precios · Casanovas Solutions</title>
+  <meta name="description" content="Precios orientativos de servicios web, mantenimiento y consultoría en Casanovas Solutions. Diseños premium y soluciones digitales a medida para pequeños negocios." />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --subtext: #555555;
+      --accent1: #007aff;
+      --accent2: #5856d6;
+      --card-bg: #fafafa;
+      --border: #e5e5e5;
+      --nav-bg: rgba(255,255,255,0.86);
+      --nav-border: rgba(0,0,0,0.05);
+      --shadow-soft: 0 14px 40px rgba(0,0,0,0.06);
+      --section-padding: 55px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #050509;
+        --text: #f0f2ff;
+        --subtext: #c4c8d8;
+        --accent1: #00b7ff;
+        --accent2: #8a2bff;
+        --card-bg: rgba(15,15,25,0.96);
+        --border: rgba(255,255,255,0.08);
+        --nav-bg: rgba(7,7,14,0.9);
+        --nav-border: rgba(255,255,255,0.06);
+        --shadow-soft: 0 18px 50px rgba(0,0,0,0.7);
+        --section-padding: 50px;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 10% -10%, rgba(0,122,255,0.08), transparent 55%),
+        radial-gradient(circle at 110% 110%, rgba(136,84,255,0.10), transparent 60%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top:0; width:100%; padding:10px 24px;
+      display:flex; justify-content:space-between; align-items:center;
+      backdrop-filter: blur(16px);
+      background: var(--nav-bg);
+      border-bottom:1px solid var(--nav-border);
+      z-index:999;
+    }
+    .nav-left { display:flex; align-items:center; gap:10px; font-weight:700; }
+    .nav-logo { width:30px; height:30px; }
+
+    .nav-links { display:flex; gap:18px; font-size:0.95rem; }
+    .nav-links a {
+      color:inherit; opacity:0.75; text-decoration:none;
+      position:relative; padding-bottom:3px; transition:0.25s ease;
+    }
+    .nav-links a:hover { opacity:1; }
+    .nav-links a::after {
+      content:""; position:absolute; bottom:0; left:50%; width:0%; height:2px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      transition:width .3s ease, left .3s ease;
+    }
+    .nav-links a:hover::after { width:100%; left:0; }
+
+    @media (max-width:640px){ .nav-links{display:none;} }
+
+    /* HEADER */
+    header {
+      padding:120px 20px 40px;
+      text-align:center;
+      max-width:900px; margin:0 auto;
+    }
+    header h1 {
+      font-size:3rem; font-weight:800; margin-bottom:10px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    header p {
+      max-width:650px; margin:0 auto;
+      color:var(--subtext); font-size:1.05rem; line-height:1.7;
+    }
+
+    /* SECTIONS */
+    section {
+      max-width:950px; margin:0 auto;
+      padding:var(--section-padding) 20px;
+      opacity:0; transform:translateY(40px);
+      transition:0.7s ease;
+    }
+    section.visible { opacity:1; transform:translateY(0); }
+
+    section h2 {
+      text-align:center; margin-bottom:18px;
+      font-size:2.2rem; font-weight:700;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+    .section-subtitle {
+      text-align:center; max-width:620px; margin:0 auto 22px;
+      color:var(--subtext); font-size:0.98rem; line-height:1.7;
+    }
+
+    /* CARDS */
+    .price-card {
+      background:var(--card-bg);
+      padding:22px 24px;
+      border-radius:16px;
+      border:1px solid var(--border);
+      margin-bottom:20px;
+      box-shadow:var(--shadow-soft);
+      transition:0.25s ease;
+    }
+    .price-card:hover {
+      transform:translateY(-3px);
+      border-color:var(--accent1);
+    }
+
+    .price-card h3 { font-size:1.45rem; margin-bottom:6px; }
+
+    .price {
+      font-size:1.3rem; font-weight:700; margin:8px 0 14px;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+    }
+
+    .price-card p {
+      color:var(--subtext);
+      font-size:0.98rem; line-height:1.7;
+    }
+
+    /* CTA */
+    .cta-box { text-align:center; max-width:700px; margin:0 auto; }
+    .cta-box p { margin-bottom:22px; color:var(--subtext); }
+
+    .cta-btn {
+      display:inline-block; padding:12px 22px;
+      border-radius:999px; text-decoration:none; color:white;
+      background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      font-weight:600; font-size:0.95rem;
+      box-shadow:0 12px 30px rgba(0,0,0,0.25);
+      transition:0.2s ease;
+    }
+    .cta-btn:hover { transform:translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      margin-top:40px; text-align:center;
+      padding:26px 18px; font-size:0.85rem; color:var(--subtext);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">
+      <img src="/logo-casanovas.png" class="nav-logo" alt="Logo" />
+      Casanovas Solutions
+    </div>
+    <div class="nav-links">
+      <a href="/index.html#about">Sobre mí</a>
+      <a href="/index.html#servicios">Servicios</a>
+      <a href="/index.html#contacto">Contacto</a>
+    </div>
+  </nav>
+
+  <!-- HEADER -->
+  <header>
+    <h1>Precios orientativos</h1>
+    <p>
+      Cada proyecto se construye a medida. Estos precios sirven como referencia inicial para que puedas 
+      hacerte una idea del nivel de servicio. El importe final se adapta a tu negocio y a lo que necesites conseguir.
+    </p>
+  </header>
+
+  <!-- WEBS -->
+  <section>
+    <h2>Páginas web</h2>
+    <p class="section-subtitle">
+      Diseño profesional, rendimiento y una imagen digital creada para inspirar confianza desde el primer vistazo.
+    </p>
+
+    <div class="price-card">
+      <h3>Web Básica</h3>
+      <div class="price">Desde 249 €</div>
+      <p>
+        Presencia online profesional con diseño propio, adaptación a móviles, estructura optimizada, 
+        página principal completa y formulario o contacto por WhatsApp. Incluye la configuración inicial 
+        del hosting y dominio.
+      </p>
+    </div>
+
+    <div class="price-card">
+      <h3>Web Negocio</h3>
+      <div class="price">Desde 449 €</div>
+      <p>
+        Para negocios que necesitan varias secciones bien organizadas y orientadas a conversión. 
+        Incluye identidad visual coherente, textos claros, estructura trabajada y conexión con Google Business 
+        para mejorar visibilidad cuando te busquen.
+      </p>
+    </div>
+
+    <div class="price-card">
+      <h3>Web Profesional</h3>
+      <div class="price">Desde 799 €</div>
+      <p>
+        Proyectos más completos y exigentes: diseño premium, velocidad optimizada, seguridad reforzada 
+        y funcionalidades adicionales como reservas, formularios avanzados, catálogos o integraciones.  
+        Incluye optimización SEO de estructura y contenidos clave para mejorar tu posicionamiento real en buscadores.
+      </p>
+    </div>
+  </section>
+
+  <!-- MANTENIMIENTO -->
+  <section>
+    <h2>Mantenimiento</h2>
+    <p class="section-subtitle">
+      Tu web funcionando cada día sin que tengas que preocuparte de nada: actualizaciones, estabilidad y revisiones reales.
+    </p>
+
+    <div class="price-card">
+      <h3>Plan de mantenimiento</h3>
+      <div class="price">Desde 29 €/mes</div>
+      <p>
+        Actualizaciones técnicas, revisiones de seguridad, corrección de errores, comprobación periódica 
+        de formularios y elementos críticos, y cambios puntuales de contenido siempre que lo necesites.  
+        Diseñado para que tu web esté estable y cuidada a largo plazo.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONSULTORÍA -->
+  <section>
+    <h2>Consultoría</h2>
+    <p class="section-subtitle">
+      Acompañamiento técnico para mejorar tu seguridad, organización digital y forma de trabajar.
+    </p>
+
+    <div class="price-card">
+      <h3>Consultoría IT &amp; Ciberseguridad</h3>
+      <div class="price">Desde 59 €/mes</div>
+      <p>
+        Revisión periódica de riesgos, análisis de tu entorno digital, recomendaciones claras para mejorar tu seguridad 
+        y eficiencia, selección de herramientas y sistemas para tu negocio, y apoyo en procesos de digitalización 
+        (reservas, gestión interna, formularios, automatizaciones y más).
+      </p>
+    </div>
+  </section>
+
+  <!-- SERVICIOS ADICIONALES -->
+  <section>
+    <h2>Servicios adicionales</h2>
+    <div class="price-card">
+      <p>
+        También puedo ayudarte con:
+        <br><br>
+        • Automatizaciones reales para ahorrar tiempo en tareas repetitivas.<br>
+        • Integraciones con herramientas de negocio (reservas, pagos, newsletter, gestión…).<br>
+        • Optimización avanzada de rendimiento y carga.<br>
+        • Configuración completa de correo corporativo y DNS.<br>
+        • Endurecimiento de seguridad (hardening) en servidores o webs.<br>
+        • Revisión técnica y mejora de tu infraestructura digital.<br><br>
+        Si tienes algo en mente, lo analizamos sin compromiso.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="cta-box">
+      <h2>¿Quieres una propuesta exacta?</h2>
+      <p>
+        Cuéntame tu idea, tu tipo de negocio y qué necesitas mejorar. Prepararé una propuesta clara y totalmente adaptada.
+      </p>
+      <a class="cta-btn" href="/index.html#contacto">
+        Solicitar propuesta
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> Casanovas Solutions · Arnau Casanovas ·
+    <a href="/legal.html">Aviso legal y privacidad</a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+    const sections = document.querySelectorAll("section");
+    function reveal() {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < trigger) sec.classList.add("visible");
+      });
+    }
+    window.addEventListener("scroll", reveal);
+    reveal();
+  </script>
+</body>
+</html>
