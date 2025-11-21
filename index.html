@@ -587,6 +587,48 @@ section p {
   text-align: left;
   max-width: 380px;
 }
+    /* Ensanchar texto del Sobre mí en desktop */
+@media (min-width: 900px) {
+  #about .about-content > div:last-child {
+    max-width: 700px;
+  }
+}
+#about h3 {
+  margin-top: 40px !important;
+  margin-bottom: 18px;
+}
+
+#about .cert-list {
+  margin-top: 10px;
+  line-height: 1.8;
+}
+#about .about-separator {
+  width: 60%;
+  max-width: 480px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(150,150,255,0.35), transparent);
+  margin: 32px auto;
+}
+    #about .photo-box {
+  position: relative;
+}
+
+#about .photo-box::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, rgba(0,150,255,0.22), transparent 70%);
+  filter: blur(28px);
+  opacity: 0.65;
+}
+#about .about-content {
+  align-items: center;
+}
+#about {
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
   </style>
  </head>
  <body>
@@ -663,7 +705,9 @@ section p {
         a mejorar su seguridad, su imagen digital y la forma en la que trabajan día a día,
         sin complicarse con tecnicismos.
       </p>
-
+      
+<div class="about-separator"></div>
+      
       <h3 style="margin-top: 30px;">Certificaciones & foco técnico</h3>
 
       <ul class="cert-list about-cert-list">
