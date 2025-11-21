@@ -316,5 +316,16 @@
     window.addEventListener("scroll", reveal);
     reveal();
   </script>
+  <script>
+  // Fix para anclas desde otra página (móviles iOS/Android)
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+    if (target) {
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: "smooth" });
+      }, 300); // pequeño delay para que cargue primero la página
+    }
+  }
+</script>
 </body>
 </html>
