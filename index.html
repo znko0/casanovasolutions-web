@@ -334,48 +334,63 @@
       max-width: 650px;
     }
 
-    /* ABOUT */
-    .about-centered {
-      max-width: 820px;
-      margin: 0 auto;
-      text-align: center;
-    }
+/* Bloque SOBRE LA EMPRESA más homogéneo */
+.about-centered {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: left;              /* texto alineado como el resto */
+}
 
-    .about-separator {
-      width: 60%;
-      max-width: 480px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(150,150,255,0.35), transparent);
-      margin: 32px auto;
-    }
+/* Párrafos de Sobre la empresa */
+#about p {
+  text-align: left;
+  max-width: 720px;
+  margin: 0 auto 14px;
+}
 
-    .about-cert-list {
-      margin: 0 auto;
-      margin-top: 10px;
-      text-align: left;
-      max-width: 480px;
-    }
+/* Separador fino */
+.about-separator {
+  width: 60%;
+  max-width: 480px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(150, 150, 255, 0.35),
+    transparent
+  );
+  margin: 26px auto;
+}
 
-    .cert-list {
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
+/* Lista de puntos */
+.about-cert-list {
+  list-style: none;
+  margin: 16px auto 0;
+  padding: 0;
+  max-width: 720px;
+}
 
-    .cert-list li {
-      font-size: 0.98rem;
-      margin-bottom: 8px;
-      position: relative;
-      padding-left: 18px;
-    }
+.about-cert-list li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: #d0d7e5;
+}
 
-    .cert-list li::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--accent1);
-    }
+body.light-mode .about-cert-list li {
+  color: #333;
+}
+
+.about-cert-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  color: var(--accent1);
+  font-size: 1.2em;
+}
 
     /* SERVICES */
     .grid {
