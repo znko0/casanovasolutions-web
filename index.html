@@ -803,28 +803,32 @@ body.light-mode .about-cert-list li {
     </div>
   </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p class="contact-text">
-      Cuéntame qué tipo de negocio tienes y en qué crees que podría ayudarte
-      (web, seguridad, digitalización, automatización…). Te responderé con una
-      propuesta clara y adaptada.
-    </p>
-    <div class="form-wrapper">
-      <form action="https://formsubmit.co/comercial@casanovasolutions.es" method="POST">
-        <input type="text" name="_honey" style="display:none">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://casanovasolutions.es/gracias.html">
+<!-- CONTACTO -->
+<section id="contacto">
+  <h2>Contacto</h2>
+  <p class="contact-text">
+    Cuéntame qué tipo de negocio tienes y en qué crees que podría ayudarte
+    (web, seguridad, digitalización, automatización…). Te responderé con una
+    propuesta clara y adaptada.
+  </p>
 
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+  <div class="form-wrapper">
+    <form action="https://formspree.io/f/xgovgjzz" method="POST">
+      
+      <input type="text" name="nombre" placeholder="Nombre" required>
+      <input type="email" name="email" placeholder="Correo electrónico" required>
+      <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
-        <button type="submit">Enviar</button>
-      </form>
-    </div>
-  </section>
+      <!-- Redirección tras enviar -->
+      <input type="hidden" name="_redirect" value="https://casanovasolutions.es/gracias.html">
+
+      <!-- Asunto del email -->
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde casanovasolutions.es">
+
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+</section>
 
   <footer>
     © <span id="year"></span> Casanovas Solutions ·
