@@ -813,17 +813,25 @@ body.light-mode .about-cert-list li {
   </p>
 
   <div class="form-wrapper">
-    <form action="https://formspree.io/f/xgovgjzz" method="POST">
-      
+    <form action="https://formsubmit.co/comercial@casanovasolutions.es" method="POST">
+
+      <!-- Antispam -->
+      <input type="text" name="_honey" style="display:none">
+
+      <!-- Sin captcha -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <!-- Redirección -->
+      <input type="hidden" name="_next" value="https://casanovasolutions.es/gracias.html">
+
+      <!-- Contenido -->
       <input type="text" name="nombre" placeholder="Nombre" required>
       <input type="email" name="email" placeholder="Correo electrónico" required>
       <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
 
-      <!-- Redirección tras enviar -->
-      <input type="hidden" name="_redirect" value="https://casanovasolutions.es/gracias.html">
-
-      <!-- Asunto del email -->
-      <input type="hidden" name="_subject" value="Nuevo mensaje desde casanovasolutions.es">
+      <!-- Asunto -->
+      <input type="hidden" name="_subject"
+             value="Nuevo mensaje desde casanovasolutions.es">
 
       <button type="submit">Enviar</button>
     </form>
