@@ -1,1084 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Casanovas Solutions · Ciberseguridad y Consultoría IT</title>
+<meta name="description" content="Casanovas Solutions: pentesting y ciberseguridad ofensiva, o consultoría IT y desarrollo web. Elige lo que necesita tu negocio.">
+<link rel="canonical" href="https://casanovasolutions.es" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="logo-casanovas.png">
+<meta name="theme-color" content="#050505">
 
-  <!-- SEO -->
-  <title>Casanovas Solutions · Consultoría IT y Ciberseguridad</title>
-  <meta name="description" content="Consultoría IT, ciberseguridad y soluciones digitales para autónomos y pequeñas empresas. Seguridad informática, desarrollo web y automatización con un enfoque profesional y cercano.">
-  <link rel="canonical" href="https://casanovasolutions.es" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
-  <!-- FAVICON -->
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="logo-casanovas.png">
-  <meta name="theme-color" content="#050505">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Casanovas Solutions",
+  "url": "https://casanovasolutions.es",
+  "logo": "https://casanovasolutions.es/logo-casanovas.png",
+  "description": "Ciberseguridad ofensiva, pentesting, consultoría IT y desarrollo web para autónomos y pequeñas empresas.",
+  "areaServed": "ES"
+}
+</script>
 
-  <!-- PRECONNECT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
-
-  <!-- OPEN GRAPH -->
-  <meta property="og:title" content="Casanovas Solutions · Consultoría IT y Ciberseguridad" />
-  <meta property="og:description" content="Soluciones digitales, seguridad informática y desarrollo web para negocios reales." />
-  <meta property="og:image" content="https://casanovasolutions.es/logo-casanovas.png" />
-  <meta property="og:url" content="https://casanovasolutions.es" />
-  <meta property="og:type" content="website" />
-
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Casanovas Solutions · IT & Ciberseguridad" />
-  <meta name="twitter:description" content="Consultoría tecnológica y seguridad informática para pequeños negocios." />
-  <meta name="twitter:image" content="https://casanovasolutions.es/logo-casanovas.png" />
-
-  <!-- ORGANIZATION SCHEMA -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Casanovas Solutions",
-    "url": "https://casanovasolutions.es",
-    "logo": "https://casanovasolutions.es/logo-casanovas.png",
-    "description": "Consultoría IT, ciberseguridad, automatización y desarrollo web para autónomos y pequeñas empresas.",
-    "sameAs": [
-      "https://www.linkedin.com/company/casanovasolutions/"
-    ]
+<style>
+  :root{
+    --bg:#050505;
+    --ink:#fdfdfd;
+    --ink-muted:#a9adb4;
+    --line:rgba(255,255,255,0.1);
+    --card-bg:rgba(255,255,255,0.03);
+    --sec-accent:#FF7A1A;
+    --it-accent1:#00b7ff;
+    --it-accent2:#8a2bff;
+    --sans:'Inter', sans-serif;
+    --display:'Space Grotesk', sans-serif;
   }
-  </script>
-
-  <style>
-   :root {
-      --bg-dark: #050505;
-      --bg-light: #f7f7f7;
-      --text-dark: #0a0a0a;
-      --text-light: #fdfdfd;
-      --accent1: #00b7ff;
-      --accent2: #8a2bff;
-      --card-bg-dark: rgba(255,255,255,0.04);
-      --card-border-dark: rgba(255,255,255,0.12);
-      --card-bg-light: #ffffff;
-      --card-border-light: #dddddd;
-    }
-
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", sans-serif;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      overflow-x: hidden;
-      transition: background 0.4s ease, color 0.4s ease;
-    }
-
-    body.light-mode {
-      background: var(--bg-light);
-      color: var(--text-dark);
-    }
-
-    /* BACKGROUND GRADIENT + PARTICLES */
-    #gradient-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -3;
-      background:
-        radial-gradient(circle at 20% 20%, #003cff, transparent 60%),
-        radial-gradient(circle at 80% 80%, #8300ff, transparent 60%),
-        radial-gradient(circle at 50% 50%, #009dff, transparent 70%);
-      filter: blur(60px);
-      opacity: 0.5;
-      animation: glow 12s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      0% { filter: blur(60px); opacity: 0.45; }
-      100% { filter: blur(80px); opacity: 0.7; }
-    }
-
-    canvas#particles {
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      pointer-events: none;
-      opacity: 0.35;
-    }
-
-    /* NAV */
-    .nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 12px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      backdrop-filter: blur(20px);
-      background: linear-gradient(90deg, rgba(5,5,5,0.92), rgba(5,5,10,0.88));
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      z-index: 999;
-      transition: all 0.3s ease;
-    }
-
-    .nav.scrolled {
-      padding: 8px 24px;
-      background: linear-gradient(90deg, rgba(5,5,5,0.96), rgba(5,5,10,0.92));
-      box-shadow: 0 4px 30px rgba(0,0,0,0.3);
-    }
-
-    body.light-mode .nav {
-      background: rgba(247,247,247,0.95);
-      border-bottom-color: rgba(0,0,0,0.06);
-    }
-
-    body.light-mode .nav.scrolled {
-      background: rgba(247,247,247,0.98);
-      box-shadow: 0 4px 30px rgba(0,0,0,0.08);
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
-      transition: opacity 0.3s ease;
-    }
-
-    .nav-left:hover {
-      opacity: 0.85;
-    }
-
-    .nav-logo {
-      width: 36px;
-      height: 36px;
-      border-radius: 6px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 8px rgba(0,183,255,0.4));
-    }
-
-    .nav-brand {
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      font-size: 0.95rem;
-      margin-left: auto;
-      padding-left: 40px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: inherit;
-      opacity: 0.75;
-      padding-bottom: 4px;
-      position: relative;
-      overflow: hidden;
-      font-weight: 500;
-      transition: opacity 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 0%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      transition: width 0.3s ease, left 0.3s ease;
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-      left: 0;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-left: 24px;
-    }
-
-    .mode-toggle {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.3);
-      cursor: pointer;
-      font-size: 16px;
-      transition: all 0.3s ease;
-    }
-
-    body.light-mode .mode-toggle {
-      border-color: rgba(0,0,0,0.15);
-      background: rgba(255,255,255,0.8);
-    }
-
-    .mode-toggle:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,183,255,0.3);
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-      }
-      
-      .nav-brand {
-        font-size: 0.9rem;
-      }
-    }
-
-    /* HERO */
-    header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 140px 24px 100px;
-      position: relative;
-    }
-
-    .hero-logo {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      margin-bottom: 24px;
-      filter: drop-shadow(0 0 20px rgba(0,183,255,0.6));
-      animation: float 6s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-    }
-
-    .hero-title {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      max-width: 95%;
-      font-weight: 900;
-      letter-spacing: -0.02em;
-      margin: 0;
-      text-shadow: 0px 0px 30px rgba(0, 183, 255, 0.5);
-      opacity: 0;
-      animation: heroFade 1s 0.2s forwards;
-    }
-
-    @keyframes heroFade {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .typing {
-      margin-top: 24px;
-      font-size: clamp(1rem, 3vw, 1.35rem);
-      font-weight: 400;
-      opacity: 0;
-      color: #c4d9ff;
-      min-height: 1.8em;
-      animation: typingFade 1.2s 0.6s forwards;
-    }
-
-    @keyframes typingFade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .hero-sub {
-      margin-top: 28px;
-      max-width: 580px;
-      color: rgba(255,255,255,0.75);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      opacity: 0;
-      animation: heroFade 1.2s 0.8s forwards;
-    }
-
-    body.light-mode .hero-sub {
-      color: rgba(0,0,0,0.65);
-    }
-
-    .hero-cta {
-      margin-top: 36px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-      opacity: 0;
-      animation: heroFade 1.2s 1s forwards;
-    }
-
-    .btn {
-      padding: 14px 32px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 12px;
-      text-decoration: none;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      border: none;
-      font-family: inherit;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      color: white;
-      box-shadow: 0 8px 24px rgba(0,183,255,0.35);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 32px rgba(0,183,255,0.5);
-    }
-
-    .btn-secondary {
-      background: rgba(255,255,255,0.08);
-      color: var(--text-light);
-      border: 1px solid rgba(255,255,255,0.15);
-    }
-
-    body.light-mode .btn-secondary {
-      background: rgba(0,0,0,0.04);
-      color: var(--text-dark);
-      border-color: rgba(0,0,0,0.12);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.12);
-      border-color: rgba(255,255,255,0.25);
-      transform: translateY(-2px);
-    }
-
-    body.light-mode .btn-secondary:hover {
-      background: rgba(0,0,0,0.08);
-      border-color: rgba(0,0,0,0.2);
-    }
-
-    /* SECTIONS */
-    section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 100px 24px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section h2 {
-      text-align: center;
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 800;
-      margin-bottom: 16px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    section > p {
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto 60px;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      opacity: 0.85;
-    }
-
-    /* ABOUT */
-    .about-content {
-      display: flex;
-      gap: 48px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .about-text p {
-      margin-bottom: 20px;
-      line-height: 1.8;
-      font-size: 1.05rem;
-      opacity: 0.9;
-    }
-
-    .about-image {
-      flex: 1;
-      min-width: 280px;
-      text-align: center;
-    }
-
-    .about-image img {
-      max-width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    }
-
-    /* SERVICES */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 28px;
-      margin-top: 60px;
-    }
-
-    .service-card {
-      background: var(--card-bg-dark);
-      border: 1px solid var(--card-border-dark);
-      border-radius: 16px;
-      padding: 32px;
-      transition: all 0.4s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    body.light-mode .service-card {
-      background: var(--card-bg-light);
-      border-color: var(--card-border-light);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s ease;
-    }
-
-    .service-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(0,183,255,0.3);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.3);
-    }
-
-    body.light-mode .service-card:hover {
-      box-shadow: 0 16px 48px rgba(0,0,0,0.12);
-    }
-
-    .service-icon {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-      display: block;
-      filter: drop-shadow(0 0 12px rgba(0,183,255,0.4));
-    }
-
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 14px;
-      font-weight: 700;
-    }
-
-    .service-card p {
-      line-height: 1.7;
-      opacity: 0.85;
-      font-size: 1rem;
-    }
-
-    .service-features {
-      list-style: none;
-      margin-top: 20px;
-      padding: 0;
-    }
-
-    .service-features li {
-      padding: 8px 0;
-      opacity: 0.8;
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.95rem;
-    }
-
-    .service-features li::before {
-      content: '→';
-      color: var(--accent1);
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-
-    /* STATS */
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 48px;
-      text-align: center;
-      margin-top: 60px;
-    }
-
-    .stat-item h3 {
-      font-size: 3.5rem;
-      margin-bottom: 8px;
-      background: linear-gradient(90deg, var(--accent1), var(--accent2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      font-weight: 800;
-    }
-
-    .stat-item p {
-      opacity: 0.8;
-      font-size: 1.1rem;
-    }
-
-    /* CTA SECTION */
-    .cta-section {
-      background: linear-gradient(135deg, rgba(0,183,255,0.08), rgba(138,43,255,0.08));
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 24px;
-      padding: 60px 40px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    body.light-mode .cta-section {
-      background: linear-gradient(135deg, rgba(0,183,255,0.06), rgba(138,43,255,0.06));
-      border-color: rgba(0,0,0,0.08);
-    }
-
-    .cta-section h2 {
-      margin-bottom: 20px;
-    }
-
-    .cta-section p {
-      max-width: 600px;
-      margin: 0 auto 32px;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      opacity: 0.85;
-    }
-
-    /* CONTACT FORM */
-    .form-wrapper {
-      max-width: 600px;
-      margin: 48px auto 0;
-      background: var(--card-bg-dark);
-      border: 1px solid var(--card-border-dark);
-      border-radius: 20px;
-      padding: 40px;
-    }
-
-    body.light-mode .form-wrapper {
-      background: var(--card-bg-light);
-      border-color: var(--card-border-light);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.06);
-    }
-
-    .contact-text {
-      text-align: center;
-      max-width: 650px;
-      margin: 0 auto 48px;
-      font-size: 1.1rem;
-      line-height: 1.7;
-      opacity: 0.85;
-    }
-
-    form input,
-    form textarea {
-      width: 100%;
-      padding: 14px 18px;
-      margin-bottom: 16px;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.05);
-      color: inherit;
-      font-family: inherit;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    body.light-mode form input,
-    body.light-mode form textarea {
-      border-color: rgba(0,0,0,0.12);
-      background: rgba(0,0,0,0.02);
-    }
-
-    form input:focus,
-    form textarea:focus {
-      outline: none;
-      border-color: var(--accent1);
-      box-shadow: 0 0 0 3px rgba(0,183,255,0.15);
-    }
-
-    form textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    form button {
-      width: 100%;
-      padding: 16px;
-      font-size: 1.05rem;
-      font-weight: 600;
-      background: linear-gradient(135deg, var(--accent1), var(--accent2));
-      color: white;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 8px 24px rgba(0,183,255,0.35);
-    }
-
-    form button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(0,183,255,0.5);
-    }
-
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 40px 24px;
-      font-size: 0.9rem;
-      opacity: 0.7;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    body.light-mode footer {
-      border-top-color: rgba(0,0,0,0.08);
-    }
-
-    footer a {
-      color: inherit;
-      text-decoration: none;
-      transition: opacity 0.3s ease;
-    }
-
-    footer a:hover {
-      opacity: 1;
-      color: var(--accent1);
-    }
-
-    @media (max-width: 640px) {
-      .hero-cta {
-        flex-direction: column;
-        width: 100%;
-        max-width: 300px;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      section {
-        padding: 60px 20px;
-      }
-
-      .about-content {
-        flex-direction: column;
-      }
-
-      .form-wrapper {
-        padding: 28px 20px;
-      }
-    }
-  </style>
+  body.light-mode{
+    --bg:#f7f7f7;
+    --ink:#0a0a0a;
+    --ink-muted:#5a5f68;
+    --line:rgba(0,0,0,0.1);
+    --card-bg:#ffffff;
+  }
+  *{ box-sizing:border-box; }
+  body{
+    margin:0; min-height:100vh; background:var(--bg); color:var(--ink);
+    font-family:var(--sans); display:flex; flex-direction:column; overflow-x:hidden;
+    transition:background .4s ease, color .4s ease;
+  }
+  #gradient-bg{
+    position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.55;
+    background:
+      radial-gradient(circle at 22% 20%, #003cff, transparent 55%),
+      radial-gradient(circle at 78% 75%, #8300ff, transparent 55%),
+      radial-gradient(circle at 50% 100%, rgba(255,122,26,0.35), transparent 50%);
+    filter:blur(60px);
+  }
+  body.light-mode #gradient-bg{ opacity:.18; }
+
+  nav{ display:flex; align-items:center; gap:10px; padding:26px 32px; }
+  nav img{ width:32px; height:32px; border-radius:6px; }
+  nav span{ font-family:var(--display); font-weight:600; font-size:1rem; }
+  .mode-toggle{
+    margin-left:auto; width:34px; height:34px; border-radius:8px; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center; background:var(--card-bg); cursor:pointer; font-size:15px;
+  }
+
+  main{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:40px 24px 70px; text-align:center; }
+  .eyebrow{ font-family:'Inter',sans-serif; letter-spacing:.08em; font-size:.8rem; color:var(--ink-muted); text-transform:uppercase; margin-bottom:16px; }
+  h1{
+    font-family:var(--display); font-weight:700; letter-spacing:-0.02em; margin:0 0 18px;
+    font-size:clamp(2.1rem,5vw,3.2rem);
+    background:linear-gradient(90deg, var(--it-accent1), var(--sec-accent));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .lead{ max-width:560px; color:var(--ink-muted); font-size:1.05rem; line-height:1.7; margin:0 0 52px; }
+
+  .paths{ display:grid; grid-template-columns:1fr 1fr; gap:22px; max-width:920px; width:100%; }
+  .path-card{
+    background:var(--card-bg); border:1px solid var(--line); border-radius:18px;
+    padding:36px 30px; text-align:left; text-decoration:none; color:var(--ink);
+    display:flex; flex-direction:column; gap:14px; transition:transform .3s ease, border-color .3s ease;
+    position:relative; overflow:hidden;
+  }
+  .path-card::before{
+    content:''; position:absolute; inset:0; opacity:0; transition:opacity .3s ease; z-index:-1;
+  }
+  .path-card.security::before{ background:radial-gradient(circle at 20% 0%, rgba(255,122,26,0.14), transparent 60%); }
+  .path-card.it::before{ background:radial-gradient(circle at 20% 0%, rgba(0,183,255,0.14), transparent 60%); }
+  .path-card:hover{ transform:translateY(-5px); }
+  .path-card:hover::before{ opacity:1; }
+  .path-card.security:hover{ border-color:rgba(255,122,26,0.4); }
+  .path-card.it:hover{ border-color:rgba(0,183,255,0.4); }
+
+  .tag{ font-size:.82rem; font-weight:600; letter-spacing:.01em; display:inline-block; }
+  .path-card.security .tag{ color:var(--sec-accent); }
+  .path-card.it .tag{ color:var(--it-accent1); }
+
+  .path-card h2{ font-family:var(--display); font-size:1.35rem; margin:0; font-weight:600; }
+  .path-card p{ margin:0; color:var(--ink-muted); font-size:.95rem; line-height:1.65; }
+
+  .preview{
+    font-family:'JetBrains Mono', monospace; font-size:.78rem; line-height:1.7;
+    background:rgba(255,255,255,0.03); border:1px solid var(--line); border-radius:10px;
+    padding:14px 16px; color:var(--ink-muted);
+  }
+  body.light-mode .preview{ background:rgba(0,0,0,0.02); }
+  .preview .critical{ color:var(--sec-accent); font-weight:600; }
+  .preview .url{ color:var(--it-accent1); }
+
+  .path-card .go{ margin-top:auto; font-size:.88rem; font-weight:600; display:flex; align-items:center; gap:6px; }
+  .path-card.security .go{ color:var(--sec-accent); }
+  .path-card.it .go{ color:var(--it-accent1); }
+
+  footer{ text-align:center; padding:26px; font-size:.82rem; color:var(--ink-muted); }
+  footer a{ color:inherit; text-decoration:none; }
+  footer a:hover{ color:var(--it-accent1); }
+
+  @media (max-width:720px){ .paths{ grid-template-columns:1fr; } }
+</style>
 </head>
-
 <body>
-  <div id="gradient-bg"></div>
-  <canvas id="particles"></canvas>
+<div id="gradient-bg"></div>
 
-  <nav class="nav" id="nav">
-    <a href="#" class="nav-left">
-      <img src="logo-casanovas.png" class="nav-logo" alt="Casanovas Solutions" />
-      <span class="nav-brand">Casanovas Solutions</span>
+<nav>
+  <img src="logo-casanovas.png" alt="Casanovas Solutions" />
+  <span>Casanovas Solutions</span>
+  <div class="mode-toggle" id="modeToggle">🌙</div>
+</nav>
+
+<main>
+  <div class="eyebrow">Consultoría IT & Ciberseguridad · Barcelona</div>
+  <h1>¿Qué necesita tu negocio?</h1>
+  <p class="lead">Trabajamos dos líneas separadas para hacer bien cada una: seguridad ofensiva por un lado, desarrollo y consultoría IT por otro. Elige la tuya.</p>
+
+  <div class="paths">
+    <a href="/seguridad-ofensiva.html" class="path-card security">
+      <span class="tag">CIBERSEGURIDAD</span>
+      <h2>Seguridad ofensiva</h2>
+      <p>Pentests de aplicaciones web y redes, auditorías express y simulaciones de phishing.</p>
+      <div class="preview">
+        CS-2026-014 · WEB APP<br>
+        Inyección SQL en login<br>
+        Severidad: <span class="critical">CRÍTICA · CVSS 9.8</span>
+      </div>
+      <span class="go">Ver pentesting y auditorías →</span>
     </a>
-    <div class="nav-links">
-      <a href="#about">Sobre nosotros</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
-    </div>
-    <div class="nav-right">
-      <div class="mode-toggle" id="modeToggle">🌙</div>
-    </div>
-  </nav>
-
-  <header>
-    <img src="logo-casanovas.png" class="hero-logo" alt="Logo Casanovas Solutions" />
-    <h1 class="hero-title">Casanovas Solutions</h1>
-    <div class="typing" id="typing"></div>
-    <p class="hero-sub">
-      Consultoría IT y ciberseguridad para autónomos y pequeñas empresas. 
-      Soluciones reales, sin complicaciones técnicas innecesarias.
-    </p>
-    <div class="hero-cta">
-      <a href="#contacto" class="btn btn-primary">Solicitar consultoría</a>
-      <a href="#servicios" class="btn btn-secondary">Ver servicios</a>
-    </div>
-  </header>
-
-  <section id="about">
-    <h2>Sobre nosotros</h2>
-    <div class="about-content">
-      <div class="about-text">
-        <p>
-          Somos Casanovas Solutions, consultores IT especializados en ciberseguridad y desarrollo web 
-          para pequeños negocios. Nuestro objetivo es acercar la tecnología a autónomos y 
-          empresas locales que necesitan soluciones prácticas, sin jerga técnica.
-        </p>
-        <p>
-          Creemos que la seguridad informática y una buena presencia digital no tienen por qué 
-          ser complicadas ni inaccesibles. Trabajamos con un enfoque cercano y directo, 
-          explicando cada paso para que entiendas exactamente qué estamos haciendo y por qué.
-        </p>
-        <p>
-          Desde el desarrollo de páginas web profesionales hasta la protección de tus 
-          sistemas y datos, nos encargamos de que tu negocio esté preparado para crecer con seguridad.
-        </p>
+    <a href="/it-consultoria.html" class="path-card it">
+      <span class="tag">CONSULTORÍA IT</span>
+      <h2>Desarrollo web & IT</h2>
+      <p>Páginas web a medida, automatización de procesos y soporte técnico continuo.</p>
+      <div class="preview">
+        Proyecto real · Barcelona<br>
+        <span class="url">gaiasgarden.es</span><br>
+        Entrega: 2 semanas · sin plantillas
       </div>
-    </div>
-  </section>
+      <span class="go">Ver consultoría y desarrollo →</span>
+    </a>
+  </div>
+</main>
 
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <p>
-      Soluciones tecnológicas adaptadas a las necesidades reales de autónomos 
-      y pequeñas empresas. Sin complicaciones, con resultados medibles.
-    </p>
+<footer>
+  © <span id="year"></span> Casanovas Solutions · <a href="/legal.html">Aviso legal y privacidad</a>
+</footer>
 
-    <div class="services-grid">
-      <div class="service-card">
-        <span class="service-icon">🌐</span>
-        <h3>Desarrollo Web</h3>
-        <p>
-          Páginas web profesionales que transmiten confianza y convierten visitas en clientes. 
-          Diseño limpio, rápido y optimizado para móviles.
-        </p>
-        <ul class="service-features">
-          <li>Diseño personalizado y profesional</li>
-          <li>Optimización SEO desde el inicio</li>
-          <li>Formularios y sistemas de contacto</li>
-          <li>Integración con tus herramientas</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <span class="service-icon">🔒</span>
-        <h3>Ciberseguridad</h3>
-        <p>
-          Protección real para tu negocio. Análisis de vulnerabilidades, 
-          prevención de ataques y planes de acción claros.
-        </p>
-        <ul class="service-features">
-          <li>Auditorías de seguridad completas</li>
-          <li>Protección contra ransomware</li>
-          <li>Copias de seguridad automatizadas</li>
-          <li>Formación para tu equipo</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <span class="service-icon">⚙️</span>
-        <h3>Automatización</h3>
-        <p>
-          Ahorra tiempo automatizando tareas repetitivas. Desde correos hasta 
-          procesos de gestión, hago que tu negocio funcione más eficientemente.
-        </p>
-        <ul class="service-features">
-          <li>Automatización de emails y recordatorios</li>
-          <li>Integración entre herramientas</li>
-          <li>Sistemas de reservas y citas</li>
-          <li>Gestión documental automatizada</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <span class="service-icon">💼</span>
-        <h3>Consultoría IT</h3>
-        <p>
-          Acompañamiento técnico continuo para mejorar tu infraestructura digital, 
-          seleccionar las mejores herramientas y mantener todo funcionando.
-        </p>
-        <ul class="service-features">
-          <li>Selección de software y herramientas</li>
-          <li>Optimización de procesos digitales</li>
-          <li>Soporte técnico personalizado</li>
-          <li>Planes de digitalización a medida</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <span class="service-icon">🛠️</span>
-        <h3>Mantenimiento Web</h3>
-        <p>
-          Tu web funcionando siempre al máximo. Actualizaciones, seguridad, 
-          copias de seguridad y cambios de contenido cuando los necesites.
-        </p>
-        <ul class="service-features">
-          <li>Actualizaciones de seguridad</li>
-          <li>Monitorización y copias de seguridad</li>
-          <li>Cambios de contenido ilimitados</li>
-          <li>Soporte prioritario</li>
-        </ul>
-      </div>
-
-      <div class="service-card">
-        <span class="service-icon">📧</span>
-        <h3>Email Corporativo</h3>
-        <p>
-          Configuración y gestión de correo profesional con tu dominio. 
-          Seguridad, anti-spam y sincronización en todos tus dispositivos.
-        </p>
-        <ul class="service-features">
-          <li>Correo con tu dominio propio</li>
-          <li>Protección anti-spam avanzada</li>
-          <li>Sincronización multi-dispositivo</li>
-          <li>Capacidad y seguridad garantizadas</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="cta-section">
-      <h2>¿Quieres consultar precios?</h2>
-      <p>
-        Cada proyecto es distinto y se adapta a tu presupuesto. 
-        Consulta precios orientativos para hacerte una idea del servicio.
-      </p>
-      <a href="/precios.html" class="btn btn-primary">Ver precios orientativos</a>
-    </div>
-  </section>
-
-  <section id="confianza">
-    <h2>En números</h2>
-    <div class="stats-grid">
-      <div class="stat-item">
-        <h3 class="stat-number" data-target="10">0</h3>
-        <p>Clientes satisfechos</p>
-      </div>
-      <div class="stat-item">
-        <h3 class="stat-number" data-target="5">0</h3>
-        <p>Proyectos digitales</p>
-      </div>
-      <div class="stat-item">
-        <h3 class="stat-number" data-target="5">0</h3>
-        <p>Años de experiencia</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p class="contact-text">
-      Cuéntanos qué tipo de negocio tienes y en qué crees que podríamos ayudarte 
-      (web, seguridad, digitalización, automatización…). Te responderemos con una 
-      propuesta clara y adaptada.
-    </p>
-
-    <div class="form-wrapper">
-      <form action="https://formsubmit.co/4de5f925e42dfeb1d7ab490e5b0124ba" method="POST">
-        <input type="text" name="_honey" style="display:none">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://casanovasolutions.es/gracias.html">
-        <input type="text" name="nombre" placeholder="Nombre" required>
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-        <input type="hidden" name="_subject" value="Nuevo mensaje desde casanovasolutions.es">
-        <button type="submit">Enviar mensaje</button>
-      </form>
-    </div>
-  </section>
-
-  <footer>
-    © <span id="year"></span> Casanovas Solutions ·
-    <a href="/legal.html">Aviso legal y privacidad</a>
-  </footer>
-
-  <script>
-   // TYPING EFFECT
-    const typingEl = document.getElementById("typing");
-    const typingText = "Ciberseguridad · Páginas web · Digitalización · Automatización para negocios locales";
-    let tIndex = 0;
-    function type() {
-      if (!typingEl) return;
-      if (tIndex < typingText.length) {
-        typingEl.textContent += typingText.charAt(tIndex);
-        tIndex++;
-        setTimeout(type, 40);
-      }
-    }
-    setTimeout(type, 600);
-
-    // SCROLL REVEAL
-    const sections = document.querySelectorAll("section");
-    function revealSections() {
-      const trigger = window.innerHeight * 0.85;
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < trigger) sec.classList.add("visible");
-      });
-    }
-    window.addEventListener("scroll", revealSections);
-    revealSections();
-
-    // NAV SCROLL EFFECT
-    const nav = document.getElementById("nav");
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 50) {
-        nav.classList.add("scrolled");
-      } else {
-        nav.classList.remove("scrolled");
-      }
-    });
-
-    // MODE TOGGLE
-    const modeToggle = document.getElementById("modeToggle");
-    function applyMode(mode) {
-      if (mode === "light") {
-        document.body.classList.add("light-mode");
-        modeToggle.textContent = "☀️";
-      } else {
-        document.body.classList.remove("light-mode");
-        modeToggle.textContent = "🌙";
-      }
-    }
-    const savedMode = localStorage.getItem("cs_mode");
-    if (savedMode) applyMode(savedMode);
-
-    modeToggle.addEventListener("click", () => {
-      const isLight = document.body.classList.toggle("light-mode");
-      localStorage.setItem("cs_mode", isLight ? "light" : "dark");
-      modeToggle.textContent = isLight ? "☀️" : "🌙";
-    });
-
-    // PARTICLES
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-    
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-
-    function createParticles() {
-      const total = Math.min(70, Math.floor(window.innerWidth / 20));
-      particles = [];
-      for (let i = 0; i < total; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          r: Math.random() * 2 + 0.5,
-          vx: (Math.random() - 0.5) * 0.3,
-          vy: (Math.random() - 0.5) * 0.3
-        });
-      }
-    }
-    createParticles();
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "rgba(255,255,255,0.8)";
-      particles.forEach(p => {
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0) p.x = canvas.width;
-        if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height;
-        if (p.y > canvas.height) p.y = 0;
-      });
-      requestAnimationFrame(drawParticles);
-    }
-    drawParticles();
-
-    // YEAR
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // COUNTER ANIMATION
-    function animateCounters() {
-      const statsSection = document.querySelector('#confianza');
-      if (!statsSection || !statsSection.classList.contains('visible')) return;
-
-      const numbers = document.querySelectorAll(".stat-number");
-
-      numbers.forEach(num => {
-        if (num.classList.contains("done")) return;
-
-        const target = parseInt(num.dataset.target);
-        const duration = 1200;
-        const startTime = performance.now();
-
-        function easeOutCubic(t) {
-          return 1 - Math.pow(1 - t, 3);
-        }
-
-        function update(now) {
-          const progress = Math.min((now - startTime) / duration, 1);
-          const eased = easeOutCubic(progress);
-          const value = Math.floor(eased * target);
-
-          num.textContent = value + "+";
-
-          if (progress < 1) {
-            requestAnimationFrame(update);
-          } else {
-            num.textContent = target + "+";
-          }
-        }
-
-        requestAnimationFrame(update);
-        num.classList.add("done");
-      });
-    }
-
-    window.addEventListener("scroll", animateCounters);
-
-    // SMOOTH SCROLL
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-  </script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const modeToggle = document.getElementById('modeToggle');
+  const saved = localStorage.getItem('cs_mode');
+  function applyMode(mode){
+    document.body.classList.toggle('light-mode', mode === 'light');
+    modeToggle.textContent = mode === 'light' ? '☀️' : '🌙';
+  }
+  if (saved) applyMode(saved);
+  modeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.toggle('light-mode');
+    localStorage.setItem('cs_mode', isLight ? 'light' : 'dark');
+    modeToggle.textContent = isLight ? '☀️' : '🌙';
+  });
+</script>
 </body>
 </html>
